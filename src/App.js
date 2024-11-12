@@ -28,6 +28,40 @@ class App extends Component {
     };
   }
 
+  // Lifecycle method to fetch data
+  componentDidMount() {
+    // Fetch credits and debits here
+    // (Assuming you've implemented this)
+  }
+
+  // Method to update the account balance
+  updateAccountBalance = () => {
+    const totalCredits = this.state.creditList.reduce((acc, credit) => acc + credit.amount, 0);
+    const totalDebits = this.state.debitList.reduce((acc, debit) => acc + debit.amount, 0);
+    const newBalance = (totalCredits - totalDebits).toFixed(2);
+    this.setState({ accountBalance: newBalance });
+  };
+
+  // Method to add a new credit
+  addCredit = (credit) => {
+    this.setState(
+      (prevState) => ({
+        creditList: [...prevState.creditList, credit],
+      }),
+      this.updateAccountBalance // Callback to recalculate balance after state update
+    );
+  };
+
+  // Method to add a new debit
+  addDebit = (debit) => {
+    this.setState(
+      (prevState) => ({
+        debitList: [...prevState.debitList, debit],
+      }),
+      this.updateAccountBalance // Callback to recalculate balance after state update
+    );
+  };
+
   // Update state's currentUser (userName) after "Log In" button is clicked
   mockLogIn = (logInInfo) => {  
     const newUser = {...this.state.currentUser};
@@ -38,13 +72,32 @@ class App extends Component {
   // Create Routes and React elements to be rendered using React components
   render() {  
     // Create React elements and pass input props to components
-    const HomeComponent = () => (<Home accountBalance={this.state.accountBalance} />)
+    const HomeComponent = () => (
+      <Home accountBalance={this.state.accountBalance} />
+    );
     const UserProfileComponent = () => (
-      <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
-    )
-    const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const CreditsComponent = () => (<Credits credits={this.state.creditList} />) 
-    const DebitsComponent = () => (<Debits debits={this.state.debitList} />) 
+      <UserProfile 
+        userName={this.state.currentUser.userName} 
+        memberSince={this.state.currentUser.memberSince} 
+      />
+    );
+    const LogInComponent = () => (
+      <LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />
+    );
+    const CreditsComponent = () => (
+      <Credits 
+        credits={this.state.creditList} 
+        addCredit={this.addCredit} 
+        accountBalance={this.state.accountBalance}
+      />
+    );
+    const DebitsComponent = () => (
+      <Debits 
+        debits={this.state.debitList} 
+        addDebit={this.addDebit} 
+        accountBalance={this.state.accountBalance}
+      />
+    );
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (
