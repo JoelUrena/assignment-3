@@ -32,8 +32,8 @@ class App extends Component {
   /* Fetch credits and debits data when component mounts */
   componentDidMount = async () => {
     /* Assuming the data is located in a local folder, adjust paths as needed */
-    const credits = await fetch('credits.json').then(res => res.json());
-    const debits = await fetch('debits.json').then(res => res.json());
+    const credits = await fetch('./components/Credits.json').then(res => res.json());
+    const debits = await fetch('./components/Debits.json').then(res => res.json());
     
     /* Set creditList and debitList, then calculate the initial balance */
     this.setState({ creditList: credits, debitList: debits }, this.calculateBalance);
