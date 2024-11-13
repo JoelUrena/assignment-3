@@ -48,11 +48,6 @@ class App extends Component {
   }
 
 
-  // Lifecycle method to fetch data
-  componentDidMount() {
-    // Fetch credits and debits here
-    // (Assuming you've implemented this)
-  }
 
   // Method to update the account balance
   updateAccountBalance = () => {
