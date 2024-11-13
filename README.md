@@ -1,8 +1,17 @@
-# bank-of-react-starter-code
-This repository is the starter code for Assignment 3 - Bank of React.
+READ ME FILE GROUP MEMBERS : TANGEER MOSOBBIR, JOEL URENA, DOUGLAS ROLLMAN
+
+github usernames:
+
+tangeer.mosobbir73@myhunter.cuny.edu
+douglaswrollman@gmail.com 
+joelurena711@gmail.com
+
+
+git hub deployed webpage link: 
+https://joelurena.github.io/assignment-3/
 
 ### Live Link 
-[Website link](https://johnnylaicode.github.io/bank-of-react-starter-code/)
+[Website link](https://joelurena.github.io/assignment-3/)
 
 ----------
 ### 1. Use the following process to ***import*** the Assignment 3 starter code repository to your GitHub account as your starter codebase
