@@ -28,27 +28,6 @@ class App extends Component {
     };
   }
 
-
-  /* Fetch credits and debits data when component mounts */
-  componentDidMount = async () => {
-    /* Assuming the data is located in a local folder, adjust paths as needed */
-    const credits = await fetch('./components/Credits.json').then(res => res.json());
-    const debits = await fetch('./components/Debits.json').then(res => res.json());
-    
-    /* Set creditList and debitList, then calculate the initial balance */
-    this.setState({ creditList: credits, debitList: debits }, this.calculateBalance);
-  }
-
-  /* Calculate the account balance based on credits and debits */
-  calculateBalance = () => {
-    const totalCredits = this.state.creditList.reduce((sum, credit) => sum + credit.amount, 0);
-    const totalDebits = this.state.debitList.reduce((sum, debit) => sum + debit.amount, 0);
-    const balance = (totalCredits - totalDebits).toFixed(2); // Round to 2 decimal places
-    this.setState({ accountBalance: balance });
-  }
-
-
-
   // Method to update the account balance
   updateAccountBalance = () => {
     const totalCredits = this.state.creditList.reduce((acc, credit) => acc + credit.amount, 0);
