@@ -47,13 +47,6 @@ class App extends Component {
     this.setState({ accountBalance: balance });
   }
 
-
-  // Lifecycle method to fetch data
-  componentDidMount() {
-    // Fetch credits and debits here
-    // (Assuming you've implemented this)
-  }
-
   // Method to update the account balance
   updateAccountBalance = () => {
     const totalCredits = this.state.creditList.reduce((acc, credit) => acc + credit.amount, 0);
